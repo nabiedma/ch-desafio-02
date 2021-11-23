@@ -15,15 +15,15 @@
     <div id="app">
         <navbar :current-page="'Inicio'"></navbar>
         <div class="container">
-            <div class="row justify-content-center mt-3">
-                <h1 class="text-center">Desafío 02 - CoderHouse - <span class="text-success">VueJS</span></h1>
-                <div class="col-3" v-for="(receta, i) in recetas" :key="i">
-                    <card :receta="receta"></card>
-                </div>
-            </div>
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <tabla></tabla>
+                    <tabla :recetas="recetas" :tablecolor="'table-danger'" :buttoncolor="'btn-danger'"></tabla>
+                </div>
+                <div class="col-12">
+                    <tabla :recetas="recetas" :tablecolor="'table-success'" :buttoncolor="'btn-success'"></tabla>
+                </div>
+                <div class="col-12">
+                    <tabla :recetas="recetas" :tablecolor="'table-warning'" :buttoncolor="'btn-warning'"></tabla>
                 </div>
             </div>
         </div>

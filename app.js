@@ -3,7 +3,7 @@ Vue.component('navbar', {
         "current-page": String
     },
     template: `
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Recetas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,33 +21,24 @@ Vue.component('navbar', {
     `
 })
 
-Vue.component("card", {
-    props: ["receta"],
-    template: `
-    <div class="card">
-        <h2 class="text-center">Categoria {{receta.categoria}}</h2>
-        <h3 class="text-center">{{receta.cantidad}}</h3>
-        <img class="d-block mx-auto img-fluid" :src="receta.imagen" />
-    </div>
-    `
-})
-
 Vue.component("tabla", {
-    props:["receta"],
+    props:["recetas", "tablecolor", "buttoncolor"],
     template: `
-    <table class="table table-stripped">
-        <thead>
+    <table class="table" :class="tablecolor">
+        <thead class="text-uppercase">
             <th>ID</th>
             <th>Categoría</th>
             <th>Cantidad</th>
             <th>Imagen</th>
+            <th>Acciones</th>
         </thead>
         <tbody>
-            <tr>
+            <tr v-for="(receta, i) in recetas">
                 <td>{{receta.id}}</td>
                 <td>{{receta.categoria}}</td>
                 <td>{{receta.cantidad}}</td>
-                <td>{{receta.imagen}}</td>
+                <td><img :src="receta.imagen" class="d-block mx-auto img-fluid" style="width: 350px; height: auto;" /></td>
+                <td><a href="#" class="btn" :class="buttoncolor">Ver Recetas</a></td>
             </tr>
         </tbody>
     </table>
